@@ -1,3 +1,4 @@
+# source: https://github.com/mimoo/RSA-and-LLL-attacks
 def coppersmith_howgrave_univariate(pol, modulus, beta, mm, tt, XX):
     """
     Howgrave-Graham revisited method of Coppersmith following theorem:
