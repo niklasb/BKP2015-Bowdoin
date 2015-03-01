@@ -127,7 +127,7 @@ def coppersmith_howgrave_univariate(pol, modulus, beta, mm, tt, XX):
 ##########################################
 
 import os
-RSATOOL = 'python2 ~/toolz/rsatool/rsatool.py'
+RSATOOL = 'python2 rsatool.py'
 alph = "abcdefghijklmnopqrstuvwxyz"
 table = alph.upper() + alph.lower() + "0123456789+/"
 rev = dict((c,i) for i,c in enumerate(table))
@@ -165,9 +165,10 @@ print "solutions:", roots
 assert len(roots) > 0
 q = qbar - roots[0]
 p = n / q
+e = 0x010001
 assert p * q == n
 print "Writing key to file privkey.pem"
-os.system('%s -n %s -p %d -q %d -o privkey.pem' % (RSATOOL, n, p, q))
+os.system('%s -n %s -e %s -p %d -q %d -o privkey.pem' % (RSATOOL, n, e, p, q))
 print "Extracting flag"
 os.system('tar xf foundkeys.tar.gz.*')
 print "Decrypting flag"
